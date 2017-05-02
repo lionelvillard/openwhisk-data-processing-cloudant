@@ -28,7 +28,7 @@ function install() {
   wsk package bind /whisk.system/cloudant "$CLOUDANT_INSTANCE" \
     --param username "$CLOUDANT_USERNAME" \
     --param password "$CLOUDANT_PASSWORD" \
-    --param host "$CLOUDANT_USERNAME.cloudant.com"
+    --param host "$CLOUDANT_HOSTNAME"
 
   echo "Creating trigger to fire events when data is inserted"
   wsk trigger create image-uploaded \
