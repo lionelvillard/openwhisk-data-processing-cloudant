@@ -13,12 +13,14 @@
 # limitations under the License.
 ##############################################################################
 language: bash
-sudo: true
+sudo: false
 
 deploy:
   provider: releases
   api_key:
     secure: itK5ywySdV9xpFVAzNz5c3gRym7rNO4nRMjIIFhjNjA7eJ9OfebgDTCd6kmf6vr1YrSpTUB4mnJLsgnejTrGa7Zw64Vp8NaNvimU7hTYqGITnJswMcbVwPTiQZD9qlA6kXDv71XJ6emafXs7jNhDy1zDBu+NJTQtPC/XFIF/KSSc1hxcCxKzcJkTN6grpD6qFvvxcIksgP2/3FH8yd0yjqQA1/D+fLB9MCsGtDBFyP/J9ap4zyPVBfghreQDEID0+oqpppEbfGogcPP9SqIXBPaIDa4aI2NDD0v4TYxr+4knaysdeYtweGGK2lPPSXlHpe9gMvFzEN0y2OH/wdJS5zcB06apuBlSM0xvoBb4zbJwN98D/BH4FBhsHCr3cvbQAtKSQDT5idMl8bJiV1cwPx9nCy9jWjP4Q1jCUHsIbsOXkV9RL/PH0g/FhAlDFKmLFv8ZHx8dmW+so0XITkNXWKYhMRJRwxyQSBDxXjipFK0uMf80oCMjfyPQDLUli4Q6n5+r2R3v0yYoYZC30nT8w3hk8B6zDhrP5n8frTn/XIiQ1idhbBGet5HOOHunOe6qeRHAS9BaLs7/xB1YmCeNfp3TtGBVzoYl3o4Y7eZ4a8o1u2WBbhxX5Mv55Dovj/SXDd0V6yZedXlyu0CNrsm5d00Ozi7dgCjNisx22gUpnSc=
-  file: actions/*
+  file:
+    - "actions/write-from-cloudant.js"
+    - "actions/write-to-cloudant.js"
   on:
     repo: lionelvillard/openwhisk-data-processing-cloudant
