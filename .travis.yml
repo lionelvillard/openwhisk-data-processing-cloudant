@@ -19,7 +19,7 @@ before_deploy:
   - UPLOAD_DIR=`mktemp -d`
   - cp actions/write-from-cloudant.js $UPLOAD_DIR/actions.write-from-cloudant.js
   - cp actions/write-to-cloudant.js $UPLOAD_DIR/actions.write-to-cloudant.js
-  - cp actions/manifest.yaml $UPLOAD_DIR
+  - cp manifest.yaml $UPLOAD_DIR
   - ls -la $UPLOAD_DIR
 
 deploy:
