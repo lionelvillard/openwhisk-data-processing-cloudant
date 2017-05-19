@@ -19,6 +19,7 @@ before_deploy:
   - mkdir -p $TRAVIS_BUILD_DIR/actions
   - cp actions/write-from-cloudant.js $TRAVIS_BUILD_DIR/actions/actions.write-from-cloudant.js
   - cp actions/write-to-cloudant.js $TRAVIS_BUILD_DIR/actions/actions.write-to-cloudant.js
+  - ls -la $TRAVIS_BUILD_DIR/actions
 
 deploy:
   provider: releases
