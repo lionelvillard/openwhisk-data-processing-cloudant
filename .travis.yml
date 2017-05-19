@@ -22,5 +22,6 @@ deploy:
   file:
     - "actions/write-from-cloudant.js"
     - "actions/write-to-cloudant.js"
+    - "actions2/write-to-cloudant.js"
   on:
     repo: lionelvillard/openwhisk-data-processing-cloudant
