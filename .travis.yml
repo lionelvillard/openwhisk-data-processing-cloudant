@@ -31,7 +31,7 @@ deploy:
     - $UPLOAD_DIR/*
   skip_cleanup: true
   on:
-    repo: lionelvillard/openwhisk-data-processing-cloudant
+    tags: true
 
 notifications:
   webhooks: https://openwhisk.ng.bluemix.net/api/v1/web/villard@us.ibm.com_dev/openwhisk-deploy/travis-webhook
