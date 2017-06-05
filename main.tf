@@ -1,5 +1,7 @@
 provider "ibmcloud" {
   bluemix_api_key = "${var.bluemix_api_key}"
+  softlayer_username = "${var.slusername}"
+  softlayer_api_key = "${var.slapikey}"
 }
 
 data "ibmcloud_cf_space" "spacedata" {

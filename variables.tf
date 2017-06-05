@@ -13,3 +13,11 @@ variable "cf_space" {
 variable "database" {
   type = "string"
 }
+
+variable "slusername" {
+  type = "string"
+}
+
+variable "slapikey" {
+  type = "string"
+}
