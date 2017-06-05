@@ -1,0 +1,14 @@
+---
+name: "Cloudant Data Processing with OpenWhisk deployment to Bluemix"
+description: "Cloudant Data Processing with OpenWhisk deployment to Bluemix"
+version: 0.1
+required:
+ - deploy
+
+deploy:
+  schema: deploy.json
+  service-category: pipeline
+  parameters:
+    deploy-region: "{{region}}"
+    deploy-org: "{{organization}}"
+    deploy-space: "{{space}}"

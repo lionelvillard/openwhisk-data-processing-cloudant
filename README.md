@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/IBM/openwhisk-data-processing-cloudant.svg?branch=master)](https://travis-ci.org/IBM/openwhisk-data-processing-cloudant)
 
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/lionelvillard/openwhisk-data-processing-cloudant#[required])
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy?repository=https://github.com/lionelvillard/openwhisk-data-processing-cloudant#[required])
 
 # Cloudant data processing with OpenWhisk
 This project shows the power of serverless, event-driven architectures to execute code in response to database change events from Cloudant, thus extracting highly scalable and highly efficient analytics from both technologies.
