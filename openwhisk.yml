@@ -1,0 +1,39 @@
+name: dataprocessing
+version: 0.1.0
+
+packages:
+  openwhisk-cloudant:
+    service: ibm-cloudant
+    org: villard@us.ibm.com
+    space: ${vars.cloudant_space}
+    name: cloudant
+    key: ${vars.envname}-dataproc
+    dbname: ${vars.database}
+
+actions:
+  write-from-cloudant:
+    location: actions/write-from-cloudant.js
+  write-to-cloudant:
+    location: actions/write-to-cloudant.js
+    inputs:
+      CLOUDANT_USERNAME: ${self.packages['openwhisk-cloudant'].inputs.username}
+      CLOUDANT_PASSWORD: ${self.packages['openwhisk-cloudant'].inputs.password}
+      CLOUDANT_DATABASE: ${vars.database}
+
+  write-from-cloudant-sequence:
+    sequence: openwhisk-cloudant/read, write-from-cloudant
+
+triggers:
+  # Trigger named "image-uploaded"
+  # Creating trigger to fire events when data is inserted
+  image-uploaded:
+    source: openwhisk-cloudant/changes
+    inputs:
+      dbname: ${vars.database}
+
+rules:
+  # Rule named "echo-images"
+  # Creating rule that maps database change trigger to sequence
+  echo-images:
+    trigger: image-uploaded
+    action: write-from-cloudant-sequence

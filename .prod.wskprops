@@ -1,0 +1,4 @@
+APIHOST=openwhisk.ng.bluemix.net
+BLUEMIX_ORG=villard@us.ibm.com
+CLOUDANT_SPACE=dev # in real life this should be prod.
+DATABASE=dataproc_prod

@@ -1,0 +1,5 @@
+APIHOST=openwhisk.ng.bluemix.net
+BLUEMIX_ORG=villard@us.ibm.com
+CLOUDANT_SPACE=dev
+DATABASE=dataproc_dev
+AUTH=5a0d7d6f-efe8-4005-a3ac-1c77c931701e:oi9O21t3rREtA4nQ9tJxp6fxP6TDT72CAFq15XAYZ7a1UgEHJuWTSNKwiAktZr6F
