@@ -1,0 +1,88 @@
+name: dataprocessing
+version: 0.0.2
+
+resources:
+  space:
+    type: ibm_space
+    endpoint: ${vars.BLUEMIX_ENDPOINT}
+    org: ${vars.BLUEMIX_ORG}
+    name: dataprocessing-services
+
+  cloudant:
+    type: ibm_service_instance
+    service: cloudant
+    space: space
+#    managed: true
+
+packages:
+
+  # bind cloudant service. Auto-generate key
+  dpcloudant:
+    resource: cloudant
+    dbname: db-${vars.envname}
+
+actions:
+  write-from-cloudant:
+    location: actions/write-from-cloudant.js
+  write-to-cloudant:
+    location: actions/write-to-cloudant.js
+    inputs:
+      CLOUDANT_USERNAME: ${self.packages.dpcloudant.inputs.username}
+      CLOUDANT_PASSWORD: ${self.packages.dpcloudant.inputs.password}
+      CLOUDANT_DATABASE: db-${vars.envname}
+  write-from-cloudant-sequence:
+    sequence: dpcloudant/read, write-from-cloudant
+
+  # # web client
+  # put-image-response:
+  #   kind: nodejs
+  #   code: |
+  #     const main = p => ({ statusCode: 200, body: '* inserted image *\n' })
+
+  # put-image:
+  #   sequence: write-to-cloudant, put-image-response
+  #   annotations:
+  #     web-export: true
+
+triggers:
+  # Trigger named "image-uploaded"
+  # Creating trigger to fire events when data is inserted
+  image-uploaded:
+    feed: dpcloudant/changes
+    inputs:
+      dbname: ${self.packages.dpcloudant.inputs.dbname}
+
+rules:
+  # Rule named "echo-images"
+  # Creating rule that maps database change trigger to sequence
+  echo-images:
+    trigger: image-uploaded
+    action: write-from-cloudant-sequence
+
+# apis:
+#   /dataproc:
+#     basePath: /dataproc
+#     paths:
+#       /image:
+#         put: put-image
+
+environments:
+  dev:
+    writable: true
+    promote:
+#    - stage-us
+    - stage-eu
+  stage-us:
+    writable: true
+    versioned: true
+    promote:
+    - prod-us
+  stage-eu:
+    writable: true
+    versioned: true
+    promote:
+    - prod-eu
+  prod-us:
+    versioned: true
+  prod-eu:
+    versioned: true
