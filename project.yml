@@ -12,7 +12,7 @@ resources:
     type: ibm_service_instance
     service: cloudant
     space: space
-#    managed: true
+    managed: true
 
 packages:
 
@@ -70,7 +70,7 @@ environments:
   dev:
     writable: true
     promote:
-    - stage-us
+#    - stage-us
     - stage-eu
   stage-us:
     writable: true
